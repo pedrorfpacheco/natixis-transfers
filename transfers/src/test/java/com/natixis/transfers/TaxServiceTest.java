@@ -38,13 +38,6 @@ public class TaxServiceTest {
         final LocalDate dateC3 = now.plusDays(31);
         final LocalDate dateC4 = now.plusDays(41);
 
-        final Transfer expectedTransferA = new Transfer(null, valueA, now, now, new Tax(typeA, 33.0));
-        final Transfer expectedTransferB = new Transfer(null, valueB, now, dateB, new Tax(typeB, 180.0));
-        final Transfer expectedTransferC1 = new Transfer(null, valueC, now, dateC1, new Tax(typeC, 246.0));
-        final Transfer expectedTransferC2 = new Transfer(null, valueC, now, dateC2, new Tax(typeC, 207.0));
-        final Transfer expectedTransferC3 = new Transfer(null, valueC, now, dateC3, new Tax(typeC, 141.0));
-        final Transfer expectedTransferC4 = new Transfer(null, valueC, now, dateC4, new Tax(typeC, 51.0));
-
         final Tax taxA = new Tax(typeA, 33.0);
         final Tax taxB = new Tax(typeB, 180.0);
         final Tax taxC1 = new Tax(typeC, 246.0);
