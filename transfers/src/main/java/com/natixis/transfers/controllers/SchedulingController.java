@@ -30,6 +30,22 @@ public class SchedulingController {
         }
     }
 
+    @PutMapping("/{id}/{value}/{dateString}")
+    public ResponseEntity<?> updateTransfer(@PathVariable final String id,
+                                                             @PathVariable final long value,
+                                                             @PathVariable final String dateString) {
+
+        LocalDate date = LocalDate.parse(dateString);
+
+        try {
+            Transfer transfer = schedulingService.updateTransfer(id, value, date);
+
+            return new ResponseEntity<>(transfer, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
     @GetMapping("/{dateString}")
     public ResponseEntity<?> getAllTransfers(@PathVariable final String dateString) {
         try {

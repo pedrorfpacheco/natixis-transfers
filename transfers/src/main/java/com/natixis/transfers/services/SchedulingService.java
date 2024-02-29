@@ -40,4 +40,18 @@ public class SchedulingService {
         return transferRepository.findByDate(date);
     }
 
+
+
+    public Transfer updateTransfer(final String id, final long value, final LocalDate date) {
+        final Transfer transfer = transferRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Transfer not found"));
+
+        final Tax tax = taxService.calculateTax(value, date);
+        transfer.setValue(value);
+        transfer.setDate(date);
+        transfer.setTax(tax);
+
+        transferRepository.save(transfer);
+
+        return transfer;
+    }
 }
