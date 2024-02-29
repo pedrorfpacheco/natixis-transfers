@@ -24,7 +24,7 @@ public class TaxService {
     private static final double PERCENTAGE_TAX_C4 = 0.017;
 
 
-    protected Tax calculateTax(final long value, final LocalDate date) {
+    protected Tax calculateTax(final double value, final LocalDate date) {
         if (value <= LIMIT_TAX_A) {
             return calculateValueTax(TypeTax.A, value, date);
         } else if (value <= LIMIT_TAX_B) {

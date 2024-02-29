@@ -1,6 +1,7 @@
 package com.natixis.transfers.controllers;
 
 import com.natixis.transfers.domain.Transfer;
+import com.natixis.transfers.domain.TransferRequest;
 import com.natixis.transfers.services.SchedulingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,15 +31,11 @@ public class SchedulingController {
         }
     }
 
-    @PutMapping("/{id}/{value}/{dateString}")
-    public ResponseEntity<?> updateTransfer(@PathVariable final String id,
-                                                             @PathVariable final long value,
-                                                             @PathVariable final String dateString) {
-
-        LocalDate date = LocalDate.parse(dateString);
+    @PutMapping
+    public ResponseEntity<?> updateTransfer(@RequestBody final TransferRequest transferRequest) {
 
         try {
-            Transfer transfer = schedulingService.updateTransfer(id, value, date);
+            Transfer transfer = schedulingService.updateTransfer(transferRequest);
 
             return new ResponseEntity<>(transfer, HttpStatus.OK);
         } catch (IllegalArgumentException e) {
@@ -47,7 +44,7 @@ public class SchedulingController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getTransfersById(@PathVariable final String id) {
+    public ResponseEntity<?> getTransferById(@PathVariable final String id) {
         try {
             Transfer transfer = schedulingService.getTransferById(id);
 

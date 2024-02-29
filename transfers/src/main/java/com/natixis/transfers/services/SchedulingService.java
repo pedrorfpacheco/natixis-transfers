@@ -2,6 +2,7 @@ package com.natixis.transfers.services;
 
 import com.natixis.transfers.domain.Tax;
 import com.natixis.transfers.domain.Transfer;
+import com.natixis.transfers.domain.TransferRequest;
 import com.natixis.transfers.repos.TransferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,11 +33,13 @@ public class SchedulingService {
         return transfer;
     }
 
-    public Transfer updateTransfer(final String id, final long value, final LocalDate date) {
-        final Transfer transfer = transferRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Transfer not found"));
+    public Transfer updateTransfer(final TransferRequest transferRequest) {
+        final Transfer transfer = transferRepository.findById(transferRequest.getId()).orElseThrow(() -> new IllegalArgumentException("Transfer not found"));
 
-        final Tax tax = taxService.calculateTax(value, date);
-        transfer.setValue(value);
+        final LocalDate date = LocalDate.parse(transferRequest.getDate());
+
+        final Tax tax = taxService.calculateTax(transferRequest.getValue(), date);
+        transfer.setValue(transferRequest.getValue());
         transfer.setDate(date);
         transfer.setTax(tax);
 
