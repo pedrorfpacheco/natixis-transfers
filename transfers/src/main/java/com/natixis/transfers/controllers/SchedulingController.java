@@ -46,7 +46,18 @@ public class SchedulingController {
         }
     }
 
-    @GetMapping("/{dateString}")
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTransfersById(@PathVariable final String id) {
+        try {
+            Transfer transfer = schedulingService.getTransferById(id);
+
+            return new ResponseEntity<>(transfer, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/date/{dateString}")
     public ResponseEntity<?> getTransfersByDate(@PathVariable final String dateString) {
         try {
             List<Transfer> transfers = schedulingService.getTransfersByDate(LocalDate.parse(dateString));
