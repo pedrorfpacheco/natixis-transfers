@@ -3,9 +3,11 @@ package com.natixis.transfers.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
+@Document(collection = "transfers")
 @Data
 @AllArgsConstructor
 public class Transfer {
