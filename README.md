@@ -1,4 +1,4 @@
-# Transfer Service
+# Transfers API
 
 This project is a bank transfer service. It allows users to schedule transfers, update existing transfers, retrieve all transfers, retrieve transfers by ID or date, and delete transfers.
 
