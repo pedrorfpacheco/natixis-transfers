@@ -71,4 +71,15 @@ public class SchedulingController {
 
         return new ResponseEntity<>(transfers, HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTransferById(@PathVariable final String id) {
+        try {
+            schedulingService.deleteTransfer(id);
+
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 }
