@@ -2,6 +2,7 @@ package com.natixis.transfers.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 public class Transfer {
 
     @Id
-    private String id;
+    private ObjectId id;
 
     private double value;
 
