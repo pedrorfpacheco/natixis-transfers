@@ -20,6 +20,10 @@ public class SchedulingService {
     private TaxService taxService;
 
     public Transfer scheduleTransfer(final double value, final LocalDate date) {
+        if (value <= 0) {
+            throw new IllegalArgumentException("Invalid transfer value: " + value + " it has to be greater than 0.");
+        }
+
         final Tax tax = taxService.calculateTax(value, date);
 
         final Transfer transfer = new Transfer(null, value, LocalDate.now(), date, tax);
