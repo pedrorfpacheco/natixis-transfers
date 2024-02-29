@@ -30,7 +30,16 @@ public class SchedulingController {
         }
     }
 
+    @GetMapping("/{dateString}")
+    public ResponseEntity<?> getAllTransfers(@PathVariable final String dateString) {
+        try {
+            List<Transfer> transfers = schedulingService.getTransfersByDate(LocalDate.parse(dateString));
 
+            return new ResponseEntity<>(transfers, HttpStatus.OK);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
 
     @GetMapping
     public ResponseEntity<List<Transfer>> getAllTransfers() {

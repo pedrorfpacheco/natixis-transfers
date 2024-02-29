@@ -36,5 +36,8 @@ public class SchedulingService {
         return transferRepository.findAll();
     }
 
+    public List<Transfer> getTransfersByDate(final LocalDate date) {
+        return transferRepository.findByDate(date);
+    }
 
 }
