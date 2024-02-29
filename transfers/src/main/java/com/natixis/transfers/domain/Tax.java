@@ -10,7 +10,8 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 public class Tax {
 
+
     private TypeTax typeTax;
 
-
+    private Double taxValue;
 }
