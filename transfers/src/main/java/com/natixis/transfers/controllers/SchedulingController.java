@@ -47,7 +47,7 @@ public class SchedulingController {
     }
 
     @GetMapping("/{dateString}")
-    public ResponseEntity<?> getAllTransfers(@PathVariable final String dateString) {
+    public ResponseEntity<?> getTransfersByDate(@PathVariable final String dateString) {
         try {
             List<Transfer> transfers = schedulingService.getTransfersByDate(LocalDate.parse(dateString));
 
