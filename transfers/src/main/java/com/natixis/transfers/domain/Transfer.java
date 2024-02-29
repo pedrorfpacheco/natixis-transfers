@@ -4,20 +4,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 public class Transfer {
 
     @Id
-    private Long id;
+    private String id;
 
-    private Long value;
+    private double value;
 
-    private Instant createDate;
+    private LocalDate createDate;
 
-    private Instant date;
+    private LocalDate date;
 
     private Tax tax;
 }
