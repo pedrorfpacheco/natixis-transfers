@@ -1,7 +1,6 @@
 package com.natixis.transfers;
 
 import com.natixis.transfers.domain.Tax;
-import com.natixis.transfers.domain.Transfer;
 import com.natixis.transfers.domain.TypeTax;
 import com.natixis.transfers.services.TaxService;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,7 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TaxServiceTest {
 
