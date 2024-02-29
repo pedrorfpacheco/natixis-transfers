@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Transfer {
 
     @Id
-    private ObjectId id;
+    private String id;
 
     private double value;
 
