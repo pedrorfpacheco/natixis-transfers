@@ -19,7 +19,7 @@ public class SchedulingService {
     @Autowired
     private TaxService taxService;
 
-    public Transfer scheduleTransfer(final long value, final LocalDate date) {
+    public Transfer scheduleTransfer(final double value, final LocalDate date) {
         final Tax tax = taxService.calculateTax(value, date);
 
         final Transfer transfer = new Transfer(null, value, LocalDate.now(), date, tax);
