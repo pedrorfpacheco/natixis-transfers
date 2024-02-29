@@ -32,16 +32,6 @@ public class SchedulingService {
         return transfer;
     }
 
-    public List<Transfer> getTransfers() {
-        return transferRepository.findAll();
-    }
-
-    public List<Transfer> getTransfersByDate(final LocalDate date) {
-        return transferRepository.findByDate(date);
-    }
-
-
-
     public Transfer updateTransfer(final String id, final long value, final LocalDate date) {
         final Transfer transfer = transferRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Transfer not found"));
 
@@ -53,5 +43,21 @@ public class SchedulingService {
         transferRepository.save(transfer);
 
         return transfer;
+    }
+
+    public List<Transfer> getTransfers() {
+        return transferRepository.findAll();
+    }
+
+    public Transfer getTransferById(final String id) {
+        return transferRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Transfer not found"));
+    }
+
+    public List<Transfer> getTransfersByDate(final LocalDate date) {
+        return transferRepository.findByDate(date);
+    }
+
+    public void deleteTransfer(final String id) {
+        transferRepository.deleteById(id);
     }
 }
